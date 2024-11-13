@@ -1,9 +1,11 @@
-import { httpClient } from "./lib/axios";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({});
 
 export function App() {
-  httpClient
-    .get("/movie/popular?language=pt-BR&page=1")
-    .then(({ data }) => console.log(data));
-
-  return <h1>Teste - Tech 4 Humans</h1>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <h1>Teste - Tech 4 Humans</h1>
+    </QueryClientProvider>
+  );
 }
