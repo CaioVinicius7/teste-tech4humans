@@ -1,19 +1,19 @@
 import { useHomeController } from "./useHomeController";
 
 export function Home() {
-  const { popularMovies, isFetching } = useHomeController();
+  const { movies, isFetching } = useHomeController();
 
   return (
     <main>
       <h2>Listagem de filmes populares:</h2>
 
-      {!popularMovies && <span>Ops! Nenhum filme foi encontrado...</span>}
+      {!movies && <span>Ops! Nenhum filme foi encontrado...</span>}
 
       {isFetching && <span>Carregando...</span>}
 
       <div className="flex items-center flex-wrap gap-4">
-        {!!popularMovies &&
-          popularMovies.movies.map((movie) => (
+        {!!movies &&
+          movies.movies.map((movie) => (
             <div>
               <img
                 src={`https://image.tmdb.org/t/p/w154/${movie.posterPath}`}
