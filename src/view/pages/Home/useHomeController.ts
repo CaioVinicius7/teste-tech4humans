@@ -9,7 +9,7 @@ export function useHomeController() {
 
   const page = z.coerce.number().parse(searchParams.get("page") ?? 1);
 
-  const { data: movies, isFetching } = useQuery({
+  const { data, isFetching } = useQuery({
     queryKey: ["movies", page],
     queryFn: () =>
       moviesService.getMovies({
@@ -26,7 +26,8 @@ export function useHomeController() {
   }
 
   return {
-    movies,
+    movies: data?.movies,
+    meta: data?.meta,
     isFetching,
     handlePaginate
   };
