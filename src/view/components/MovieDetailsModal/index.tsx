@@ -27,7 +27,10 @@ export function MovieDetailsModal() {
       <DialogContent>
         <DialogTitle>{movie.originalTitle}</DialogTitle>
 
-        <DialogDescription>{movie.overview}</DialogDescription>
+        <DialogDescription>
+          {movie.overview ||
+            "Ops, sinopse indisponível! Não encontramos informações para este filme no momento."}
+        </DialogDescription>
 
         <div className={cn("relative", !movieVideoKey && "hidden")}>
           <Skeleton className="w-full aspect-video rounded-md block" />
