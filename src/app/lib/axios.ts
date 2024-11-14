@@ -10,6 +10,7 @@ httpClient.interceptors.request.use(async (config) => {
   config.params = config.params || {};
 
   config.params.api_key = env.VITE_API_KEY;
+  config.params.language = "pt-BR";
 
   return config;
 });
