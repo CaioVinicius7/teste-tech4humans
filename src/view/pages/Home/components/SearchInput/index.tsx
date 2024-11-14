@@ -1,6 +1,8 @@
+import { Search, X } from "lucide-react";
+
 import { Button } from "@/view/components/ui/button";
 import { Input } from "@/view/components/ui/input";
-import { Search, X } from "lucide-react";
+
 import { useSearchInputController } from "./useSearchInputController";
 
 export function SearchInput() {
@@ -10,8 +12,7 @@ export function SearchInput() {
   return (
     <form
       onSubmit={handleSearch}
-      className="rounded flex items-center md:max-w-[350px] w-full relative focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2
-"
+      className="relative flex w-full items-center rounded focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 md:max-w-[350px]"
     >
       <Input
         value={search}
@@ -30,7 +31,7 @@ export function SearchInput() {
         <button
           type="button"
           onClick={handleClearSearch}
-          className="absolute right-12 p-2 h-full"
+          className="absolute right-12 h-full p-2"
         >
           <X className="size-4" />
         </button>

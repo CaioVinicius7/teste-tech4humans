@@ -1,25 +1,26 @@
 import { ArrowUpDown } from "lucide-react";
 
-import { Pagination } from "./components/Pagination";
-import { useHomeController } from "./useHomeController";
 import { MovieDetailsModal } from "@/view/components/MovieDetailsModal";
-import { SortSelect } from "./components/SortSelect";
+
 import { MovieCard } from "./components/MovieCard";
-import { SearchInput } from "./components/SearchInput";
 import { MovieCardsSkeleton } from "./components/MovieCardsSkeleton";
+import { Pagination } from "./components/Pagination";
 import { PaginationSkeleton } from "./components/PaginationSkeleton";
+import { SearchInput } from "./components/SearchInput";
+import { SortSelect } from "./components/SortSelect";
+import { useHomeController } from "./useHomeController";
 
 export function Home() {
   const { movies, meta, isFetching, hasSearch, handlePaginate } =
     useHomeController();
 
   return (
-    <main className="max-w-[1420px] px-10 w-full mx-auto py-10 space-y-6">
+    <main className="mx-auto w-full max-w-[1420px] space-y-6 px-10 py-10">
       {!movies && !isFetching && (
         <span>Ops! Nenhum filme foi encontrado...</span>
       )}
 
-      <div className="flex gap-4 items-start md:items-center justify-between flex-col md:flex-row">
+      <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
         <SearchInput />
 
         {!hasSearch && (
@@ -35,7 +36,7 @@ export function Home() {
         )}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md-custom:grid-cols-cards gap-6 sm:gap-4">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-4 md-custom:grid-cols-cards">
         {isFetching && <MovieCardsSkeleton />}
 
         {!isFetching &&

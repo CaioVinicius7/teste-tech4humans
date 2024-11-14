@@ -1,4 +1,5 @@
 import { cn } from "@/app/lib/utils";
+
 import {
   Dialog,
   DialogContent,
@@ -33,14 +34,14 @@ export function MovieDetailsModal() {
         </DialogDescription>
 
         <div className={cn("relative", !movieVideoKey && "hidden")}>
-          <Skeleton className="w-full aspect-video rounded-md block" />
+          <Skeleton className="block aspect-video w-full rounded-md" />
 
           {movieVideoKey && !videoIsLoading && (
             <iframe
               src={`https://www.youtube.com/embed/${movieVideoKey}`}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              className="w-full aspect-video rounded-md absolute inset-0"
+              className="absolute inset-0 aspect-video w-full rounded-md"
               onLoad={handleIframeload}
             />
           )}

@@ -1,6 +1,7 @@
-import { createContext, type ReactNode, useState } from "react";
-import type { Movie } from "../entities/Movie";
 import { useQuery } from "@tanstack/react-query";
+import { createContext, type ReactNode, useState } from "react";
+
+import type { Movie } from "../entities/Movie";
 import { moviesService } from "../services/movies";
 
 interface MovieModalContextValue {

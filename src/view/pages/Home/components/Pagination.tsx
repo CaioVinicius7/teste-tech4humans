@@ -33,7 +33,7 @@ export function Pagination({
       </span>
 
       <div className="flex items-center gap-6 lg:gap-8">
-        <span className="hidden text-sm font-medium md:block whitespace-nowrap">
+        <span className="hidden whitespace-nowrap text-sm font-medium md:block">
           Página {page} de {isExceedingMaxPages ? 500 : totalPages}
         </span>
 

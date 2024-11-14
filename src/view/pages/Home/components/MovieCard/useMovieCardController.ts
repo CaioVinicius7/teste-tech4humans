@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { moviesService } from "@/app/services/movies";
 import { useMovieDialog } from "@/app/hooks/useMovieDialog";
+import { moviesService } from "@/app/services/movies";
 
 interface useMovieCardControllerParams {
   movieId: number;

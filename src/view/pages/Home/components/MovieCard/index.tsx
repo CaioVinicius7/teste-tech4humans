@@ -1,8 +1,8 @@
 import type { Movie } from "@/app/entities/Movie";
 import { cn } from "@/app/lib/utils";
 import { ageGroupColorPick } from "@/app/utils/ageGroupColorPick";
-import defaultPoster from "@/assets/default-poster.png";
 import { dateFormatter } from "@/app/utils/dateFormatter";
+import defaultPoster from "@/assets/default-poster.png";
 
 import { useMovieCardController } from "./useMovieCardController";
 
@@ -18,19 +18,19 @@ export function MovieCard({ movie }: MovieCardProps) {
   return (
     <div
       onClick={() => openMovieModal(movie)}
-      className="rounded-lg overflow-hidden relative cursor-pointer group"
+      className="group relative cursor-pointer overflow-hidden rounded-lg"
     >
       <img
         src={
-          !!movie.posterPath
+          movie.posterPath
             ? `https://image.tmdb.org/t/p/w500/${movie.posterPath}`
             : defaultPoster
         }
         alt={`Poster do filme ${movie.title}`}
-        className="object-cover aspect-[2/3] w-full rounded-lg"
+        className="aspect-[2/3] w-full rounded-lg object-cover"
       />
 
-      <div className="py-2 sm:py-4 group-hover:opacity-100 sm:bg-zinc-200 px-2 sm:absolute sm:inset-0 sm:opacity-0 transition">
+      <div className="px-2 py-2 transition group-hover:opacity-100 sm:absolute sm:inset-0 sm:bg-zinc-200 sm:py-4 sm:opacity-0">
         <strong className="text-lg leading-3">{movie.title}</strong>
 
         <div className="flex items-center justify-between">
@@ -43,7 +43,7 @@ export function MovieCard({ movie }: MovieCardProps) {
           {hasAgeGroup && (
             <div
               className={cn(
-                "size-6 flex items-center justify-center rounded-sm",
+                "flex size-6 items-center justify-center rounded-sm",
                 ageGroupColorPick[ageGroup]
               )}
             >
@@ -52,7 +52,7 @@ export function MovieCard({ movie }: MovieCardProps) {
           )}
         </div>
 
-        <p className="leading-tight mt-8 line-clamp-[12] hidden sm:block">
+        <p className="mt-8 line-clamp-[12] hidden leading-tight sm:block">
           {movie.overview}
         </p>
       </div>
