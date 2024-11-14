@@ -6,6 +6,8 @@ import { MovieDetailsModal } from "@/view/components/MovieDetailsModal";
 import { SortSelect } from "./components/SortSelect";
 import { MovieCard } from "./components/MovieCard";
 import { SearchInput } from "./components/SearchInput";
+import { MovieCardsSkeleton } from "./components/MovieCardsSkeleton";
+import { PaginationSkeleton } from "./components/PaginationSkeleton";
 
 export function Home() {
   const { movies, meta, isFetching, hasSearch, handlePaginate } =
@@ -16,8 +18,6 @@ export function Home() {
       {!movies && !isFetching && (
         <span>Ops! Nenhum filme foi encontrado...</span>
       )}
-
-      {isFetching && <span>Carregando...</span>}
 
       <div className="flex gap-4 items-start md:items-center justify-between flex-col md:flex-row">
         <SearchInput />
@@ -36,11 +36,14 @@ export function Home() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md-custom:grid-cols-cards gap-6 sm:gap-4">
-        {!!movies &&
+        {isFetching && <MovieCardsSkeleton />}
+
+        {!isFetching &&
+          !!movies &&
           movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
       </div>
 
-      {!!meta && (
+      {!!meta && !isFetching && (
         <Pagination
           page={meta.page}
           totalPages={meta.totalPages}
@@ -48,6 +51,8 @@ export function Home() {
           onPageChange={handlePaginate}
         />
       )}
+
+      {isFetching && <PaginationSkeleton />}
 
       <MovieDetailsModal />
     </main>
