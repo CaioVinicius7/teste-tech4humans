@@ -10,7 +10,7 @@ interface MovieCardProps {
 }
 
 export function MovieCard({ movie }: MovieCardProps) {
-  const { ageGroup } = useMovieCardController({
+  const { ageGroup, hasAgeGroup } = useMovieCardController({
     movieId: movie.id
   });
 
@@ -28,7 +28,7 @@ export function MovieCard({ movie }: MovieCardProps) {
         <div className="flex items-center justify-between">
           <span>{dateFormatter(movie.releaseDate)}</span>
 
-          {ageGroup !== "no-certification" && (
+          {hasAgeGroup && (
             <div
               className={cn(
                 "size-6 flex items-center justify-center rounded-sm",

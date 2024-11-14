@@ -20,12 +20,13 @@ export function useMovieCardController({
     (releaseDate) => releaseDate.countryCode === "BR"
   );
 
-  console.log(brazilianReleaseDates);
-
   const ageGroup =
     brazilianReleaseDates?.releaseDates[0]?.certification ?? "no-certification";
 
+  const hasAgeGroup = ageGroup !== "no-certification";
+
   return {
-    ageGroup
+    ageGroup,
+    hasAgeGroup
   };
 }
