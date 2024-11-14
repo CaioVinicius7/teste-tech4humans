@@ -22,15 +22,19 @@ export function Pagination({
   totalCount,
   onPageChange
 }: PaginationProps) {
+  const isExceedingMaxPages = totalPages > 500;
+  const isFirstPage = page === 1;
+  const isLastPage = isExceedingMaxPages ? page === 500 : page === totalPages;
+
   return (
     <div className="flex items-center justify-between px-4">
       <span className="text-sm text-muted-foreground">
-        Total de {totalCount} item(s)
+        Total de {isExceedingMaxPages ? 10_000 : totalCount} item(s)
       </span>
 
       <div className="flex items-center gap-6 lg:gap-8">
         <span className="hidden text-sm font-medium md:block whitespace-nowrap">
-          Página {page} de {totalPages}
+          Página {page} de {isExceedingMaxPages ? 500 : totalPages}
         </span>
 
         <PaginationContainer>
@@ -38,7 +42,7 @@ export function Pagination({
             <PaginationItem>
               <PaginationLink
                 onClick={() => onPageChange(1)}
-                disabled={page === 1}
+                disabled={isFirstPage}
               >
                 <ChevronsLeft className="size-4" />
                 <span className="sr-only">Primeira página</span>
@@ -48,21 +52,23 @@ export function Pagination({
             <PaginationItem>
               <PaginationPrevious
                 onClick={() => onPageChange(page - 1)}
-                disabled={page === 1}
+                disabled={isFirstPage}
               />
             </PaginationItem>
 
             <PaginationItem>
               <PaginationNext
                 onClick={() => onPageChange(page + 1)}
-                disabled={page === totalPages}
+                disabled={isLastPage}
               />
             </PaginationItem>
 
             <PaginationItem>
               <PaginationLink
-                onClick={() => onPageChange(totalPages)}
-                disabled={page === totalPages}
+                onClick={() =>
+                  onPageChange(isExceedingMaxPages ? 500 : totalPages)
+                }
+                disabled={isLastPage}
               >
                 <ChevronsRight className="size-4" />
                 <span className="sr-only">Ultima página</span>
