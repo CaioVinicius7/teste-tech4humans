@@ -22,7 +22,7 @@ export function SearchInput() {
         className="rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0"
       />
 
-      <Button className="rounded-l-none">
+      <Button className="rounded-l-none bg-[#032541] hover:bg-[#507ea3]">
         <Search className="size-4" />
       </Button>
 
