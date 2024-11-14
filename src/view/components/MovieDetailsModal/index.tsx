@@ -29,22 +29,19 @@ export function MovieDetailsModal() {
 
         <DialogDescription>{movie.overview}</DialogDescription>
 
-        <Skeleton
-          className={cn(
-            "w-full aspect-video rounded-md block",
-            !videoIsLoading && "hidden"
-          )}
-        />
+        <div className={cn("relative", !movieVideoKey && "hidden")}>
+          <Skeleton className="w-full aspect-video rounded-md block" />
 
-        {movieVideoKey && !videoIsLoading && (
-          <iframe
-            src={`https://www.youtube.com/embed/${movieVideoKey}`}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full aspect-video rounded-md"
-            onLoad={handleIframeload}
-          />
-        )}
+          {movieVideoKey && !videoIsLoading && (
+            <iframe
+              src={`https://www.youtube.com/embed/${movieVideoKey}`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full aspect-video rounded-md absolute inset-0"
+              onLoad={handleIframeload}
+            />
+          )}
+        </div>
       </DialogContent>
     </Dialog>
   );
