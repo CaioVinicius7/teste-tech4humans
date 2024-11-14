@@ -26,7 +26,7 @@ interface GetPopularMoviesResponse {
 
 export async function getPopularMovies() {
   const { data } = await httpClient.get<GetPopularMoviesResponse>(
-    "/movie/popular?language=pt-BR&page=1"
+    "/movie/popular&page=1"
   );
 
   return data;
