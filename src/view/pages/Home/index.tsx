@@ -1,8 +1,9 @@
 import { MovieCard } from "./components/movieCard";
+import { Pagination } from "./components/Pagination";
 import { useHomeController } from "./useHomeController";
 
 export function Home() {
-  const { movies, isFetching } = useHomeController();
+  const { movies, isFetching, handlePaginate } = useHomeController();
 
   return (
     <main className="max-w-[1420] px-10 w-full mx-auto py-10">
@@ -16,6 +17,15 @@ export function Home() {
             <MovieCard key={movie.id} movie={movie} />
           ))}
       </div>
+
+      {!!movies && (
+        <Pagination
+          page={movies.meta.page}
+          totalPages={movies.meta.totalPages}
+          totalCount={movies.meta.totalResult}
+          onPageChange={handlePaginate}
+        />
+      )}
     </main>
   );
 }
