@@ -29,6 +29,14 @@ export default tseslint.config(
       ],
       "simple-import-sort/imports": "error",
       "prettier/prettier": "error"
-    }
+    },
+    overrides: [
+      {
+        files: ["src/app/context/**/*.{ts,tsx}"],
+        rules: {
+          "react-refresh/only-export-components": "off"
+        }
+      }
+    ]
   }
 );
