@@ -10,12 +10,15 @@ interface MovieCardProps {
 }
 
 export function MovieCard({ movie }: MovieCardProps) {
-  const { ageGroup, hasAgeGroup } = useMovieCardController({
+  const { ageGroup, hasAgeGroup, openMovieModal } = useMovieCardController({
     movieId: movie.id
   });
 
   return (
-    <div className="rounded-lg overflow-hidden relative cursor-pointer group">
+    <div
+      onClick={() => openMovieModal(movie)}
+      className="rounded-lg overflow-hidden relative cursor-pointer group"
+    >
       <img
         src={`https://image.tmdb.org/t/p/w500/${movie.posterPath}`}
         alt={`Poster do filme ${movie.title}`}

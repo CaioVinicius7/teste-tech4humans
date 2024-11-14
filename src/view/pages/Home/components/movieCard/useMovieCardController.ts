@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { moviesService } from "@/app/services/movies";
+import { useMovieDialog } from "@/app/hooks/useMovieDialog";
 
 interface useMovieCardControllerParams {
   movieId: number;
@@ -9,6 +10,8 @@ interface useMovieCardControllerParams {
 export function useMovieCardController({
   movieId
 }: useMovieCardControllerParams) {
+  const { openMovieModal } = useMovieDialog();
+
   const { data: movieReleaseDates } = useQuery({
     queryKey: ["movie-release-dates", movieId],
     queryFn: async () => moviesService.getMovieReleaseDates({ movieId })
@@ -25,6 +28,7 @@ export function useMovieCardController({
 
   return {
     ageGroup,
-    hasAgeGroup
+    hasAgeGroup,
+    openMovieModal
   };
 }

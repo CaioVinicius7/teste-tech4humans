@@ -1,6 +1,7 @@
 import { QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import { MovieModalContextProvider } from "./app/contexts/MovieDialogContext";
 import { queryClient } from "./app/lib/tanstackQuery";
 import { NotFound } from "./view/pages/404";
 import { Error } from "./view/pages/Error";
@@ -21,7 +22,9 @@ const router = createBrowserRouter([
 export function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <MovieModalContextProvider>
+        <RouterProvider router={router} />
+      </MovieModalContextProvider>
     </QueryClientProvider>
   );
 }

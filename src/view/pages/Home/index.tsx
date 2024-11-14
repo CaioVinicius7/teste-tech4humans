@@ -6,6 +6,7 @@ import { Input } from "@/view/components/ui/input";
 import { MovieCard } from "./components/movieCard";
 import { Pagination } from "./components/Pagination";
 import { useHomeController } from "./useHomeController";
+import { MovieDetailsModal } from "@/view/components/MovieDetailsModal";
 
 export function Home() {
   const { movies, meta, isFetching, handlePaginate, handleSearch } =
@@ -44,6 +45,8 @@ export function Home() {
           onPageChange={handlePaginate}
         />
       )}
+
+      <MovieDetailsModal />
     </main>
   );
 }
