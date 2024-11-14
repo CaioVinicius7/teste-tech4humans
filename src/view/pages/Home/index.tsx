@@ -13,11 +13,11 @@ export function Home() {
 
       <div className="flex items-center flex-wrap gap-4">
         {!!popularMovies &&
-          popularMovies.results.map((movie) => (
+          popularMovies.movies.map((movie) => (
             <div>
               <img
-                src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
-                alt="Capa do file"
+                src={`https://image.tmdb.org/t/p/w154/${movie.posterPath}`}
+                alt="Capa do filme"
               />
 
               <strong>{movie.title}</strong>

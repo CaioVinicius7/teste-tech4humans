@@ -1,33 +1,24 @@
 import { httpClient } from "@/app/lib/axios";
-
-interface Movie {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-}
+import { MovieMapper, type RawMovie } from "@/app/utils/mappers";
 
 interface GetPopularMoviesResponse {
   page: number;
   total_pages: number;
   total_results: number;
-  results: Movie[];
+  results: RawMovie[];
 }
 
 export async function getPopularMovies() {
   const { data } = await httpClient.get<GetPopularMoviesResponse>(
-    "/movie/popular&page=1"
+    "/movie/popular?language=pt-BR&page=1"
   );
 
-  return data;
+  return {
+    movies: data.results.map(MovieMapper),
+    meta: {
+      page: data.page,
+      totalPages: data.total_pages,
+      totalResult: data.total_results
+    }
+  };
 }
