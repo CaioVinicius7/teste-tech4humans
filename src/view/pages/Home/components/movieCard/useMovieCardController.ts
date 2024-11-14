@@ -14,8 +14,6 @@ export function useMovieCardController({
     queryFn: async () => moviesService.getMovieReleaseDates({ movieId })
   });
 
-  console.log(movieReleaseDates);
-
   const brazilianReleaseDates = movieReleaseDates?.find(
     (releaseDate) => releaseDate.countryCode === "BR"
   );
