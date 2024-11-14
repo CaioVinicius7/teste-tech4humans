@@ -10,7 +10,7 @@ export function SearchInput() {
   return (
     <form
       onSubmit={handleSearch}
-      className="rounded flex items-center max-w-[350px] w-full relative focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2
+      className="rounded flex items-center md:max-w-[350px] w-full relative focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2
 "
     >
       <Input

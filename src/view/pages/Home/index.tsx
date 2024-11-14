@@ -19,14 +19,16 @@ export function Home() {
 
       {isFetching && <span>Carregando...</span>}
 
-      <div className="flex items-center justify-between">
+      <div className="flex gap-4 items-start md:items-center justify-between flex-col md:flex-row">
         <SearchInput />
 
         {!hasSearch && (
           <div className="flex items-center gap-2">
-            <ArrowUpDown className="size-4" />
+            <ArrowUpDown className="size-4 shrink-0" />
 
-            <label htmlFor="sortSelect">Ordenar por:</label>
+            <label htmlFor="sortSelect" className="text-sm sm:text-base">
+              Ordenar por:
+            </label>
 
             <SortSelect />
           </div>
