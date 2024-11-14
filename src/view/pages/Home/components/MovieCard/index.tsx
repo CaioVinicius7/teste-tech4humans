@@ -27,10 +27,10 @@ export function MovieCard({ movie }: MovieCardProps) {
             : defaultPoster
         }
         alt={`Poster do filme ${movie.title}`}
-        className="object-cover aspect-[2/3] w-full"
+        className="object-cover aspect-[2/3] w-full rounded-lg"
       />
 
-      <div className="py-4 group-hover:opacity-100 bg-zinc-200 px-2 absolute inset-0 opacity-0 transition">
+      <div className="py-2 sm:py-4 group-hover:opacity-100 sm:bg-zinc-200 px-2 sm:absolute sm:inset-0 sm:opacity-0 transition">
         <strong className="text-lg leading-3">{movie.title}</strong>
 
         <div className="flex items-center justify-between">
@@ -52,7 +52,9 @@ export function MovieCard({ movie }: MovieCardProps) {
           )}
         </div>
 
-        <p className="leading-tight mt-8 line-clamp-[12]">{movie.overview}</p>
+        <p className="leading-tight mt-8 line-clamp-[12] hidden sm:block">
+          {movie.overview}
+        </p>
       </div>
     </div>
   );
