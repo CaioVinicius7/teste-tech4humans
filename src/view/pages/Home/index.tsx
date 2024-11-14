@@ -3,11 +3,11 @@ import { ArrowUpDown, Search } from "lucide-react";
 import { Button } from "@/view/components/ui/button";
 import { Input } from "@/view/components/ui/input";
 
-import { MovieCard } from "./components/Card";
 import { Pagination } from "./components/Pagination";
 import { useHomeController } from "./useHomeController";
 import { MovieDetailsModal } from "@/view/components/MovieDetailsModal";
 import { SortSelect } from "./components/SortSelect";
+import { MovieCard } from "./components/MovieCard";
 
 export function Home() {
   const { movies, meta, isFetching, hasSearch, handlePaginate, handleSearch } =
