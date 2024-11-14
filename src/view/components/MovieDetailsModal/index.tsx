@@ -1,3 +1,4 @@
+import { cn } from "@/app/lib/utils";
 import {
   Dialog,
   DialogContent,
@@ -28,9 +29,12 @@ export function MovieDetailsModal() {
 
         <DialogDescription>{movie.overview}</DialogDescription>
 
-        {videoIsLoading && (
-          <Skeleton className="w-full aspect-video rounded-md" />
-        )}
+        <Skeleton
+          className={cn(
+            "w-full aspect-video rounded-md block",
+            !videoIsLoading && "hidden"
+          )}
+        />
 
         {movieVideoKey && !videoIsLoading && (
           <iframe
