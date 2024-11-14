@@ -1,7 +1,8 @@
 import path from "node:path";
 
 import react from "@vitejs/plugin-react-swc";
-import { defineConfig } from "vite";
+import { defineConfig, type UserConfig } from "vite";
+import type { InlineConfig } from "vitest/node";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -13,5 +14,11 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src")
     }
+  },
+  test: {
+    globals: true,
+    setupFiles: ["./test/setup.ts"]
   }
+} as UserConfig & {
+  test: InlineConfig;
 });
