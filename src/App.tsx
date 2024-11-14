@@ -6,12 +6,19 @@ import { queryClient } from "./app/lib/tanstackQuery";
 import { NotFound } from "./view/pages/404";
 import { Error } from "./view/pages/Error";
 import { Home } from "./view/pages/Home";
+import { AppLayout } from "./view/layouts/AppLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
-    errorElement: <Error />
+    element: <AppLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/",
+        element: <Home />
+      }
+    ]
   },
   {
     path: "*",
