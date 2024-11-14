@@ -1,15 +1,16 @@
-import type { FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { useSearchParams } from "react-router-dom";
 
 export function useSearchInputController() {
+  const [search, setSearch] = useState("");
   const [, setSearchParams] = useSearchParams();
+
+  function handleChangeSearch(search: string) {
+    setSearch(search);
+  }
 
   function handleSearch(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    const formData = new FormData(event.currentTarget);
-
-    const search = formData.get("search")!.toString();
 
     setSearchParams((prevPrams) => {
       prevPrams.delete("page");
@@ -20,7 +21,20 @@ export function useSearchInputController() {
     });
   }
 
+  function handleClearSearch() {
+    setSearch("");
+
+    setSearchParams((prevPrams) => {
+      prevPrams.delete("search");
+
+      return prevPrams;
+    });
+  }
+
   return {
+    search,
+    handleChangeSearch,
+    handleClearSearch,
     handleSearch
   };
 }
