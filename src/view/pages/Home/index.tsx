@@ -20,7 +20,11 @@ export function Home() {
       {isFetching && <span>Carregando...</span>}
 
       <form onSubmit={handleSearch} className="flex gap-2 max-w-80">
-        <Input name="search" placeholder="Qual filme Deseja pesquisar?" />
+        <Input
+          name="search"
+          placeholder="Qual filme Deseja pesquisar?"
+          autoComplete="off"
+        />
 
         <Button>
           <Search className="size-4" />
