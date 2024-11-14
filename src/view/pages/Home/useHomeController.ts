@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import type { FormEvent } from "react";
 import { useSearchParams } from "react-router-dom";
 import { z } from "zod";
 
@@ -40,10 +41,26 @@ export function useHomeController() {
     });
   }
 
+  function handleSearch(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+
+    const search = formData.get("search")!.toString();
+
+    setSearchParams((prevPrams) => {
+      prevPrams.delete("page");
+      prevPrams.set("search", search);
+
+      return prevPrams;
+    });
+  }
+
   return {
     movies: hasSearch ? searchedMoviesData?.movies : moviesData?.movies,
     meta: hasSearch ? searchedMoviesData?.meta : moviesData?.meta,
     isFetching: isFetchingMovies || isFetchingMoviesSearched,
-    handlePaginate
+    handlePaginate,
+    handleSearch
   };
 }
