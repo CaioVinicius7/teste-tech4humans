@@ -1,4 +1,8 @@
 import { httpClient } from "@/app/lib/axios";
+import {
+  movieReleaseDatesMapper,
+  type RawMovieReleaseDates
+} from "@/app/utils/mappers/movieReleaseDatesMapper";
 
 interface GetMovieReleaseDatesRequest {
   movieId: number;
@@ -6,16 +10,7 @@ interface GetMovieReleaseDatesRequest {
 
 interface GetMovieReleaseDatesResponse {
   id: number;
-  results: {
-    iso_3166_1: string;
-    release_dates: {
-      certification: string;
-      iso_639_1: string;
-      note: string;
-      release_date: string;
-      type: number;
-    }[];
-  }[];
+  results: RawMovieReleaseDates[];
 }
 
 export async function getMovieReleaseDates({
@@ -25,16 +20,5 @@ export async function getMovieReleaseDates({
     `movie/${movieId}/release_dates`
   );
 
-  const formattedResponse = data.results.map((result) => ({
-    countryCode: result.iso_3166_1,
-    releaseDates: result.release_dates.map((releaseDate) => ({
-      certification: releaseDate.certification,
-      languageCode: releaseDate.iso_639_1,
-      note: releaseDate.note,
-      releaseDate: releaseDate.release_date,
-      type: releaseDate.type
-    }))
-  }));
-
-  return formattedResponse;
+  return movieReleaseDatesMapper(data.results);
 }
