@@ -1,6 +1,7 @@
 import type { Movie } from "@/app/entities/Movie";
 import { cn } from "@/app/lib/utils";
 import { ageGroupColorPick } from "@/app/utils/ageGroupColorPick";
+import { dateFormatter } from "@/app/utils/dateFormatter";
 
 import { useMovieCardController } from "./useMovieCardController";
 
@@ -25,7 +26,7 @@ export function MovieCard({ movie }: MovieCardProps) {
         <strong className="text-lg leading-3">{movie.title}</strong>
 
         <div className="flex items-center justify-between">
-          <span>{movie.releaseDate}</span>
+          <span>{dateFormatter(movie.releaseDate)}</span>
 
           {ageGroup !== "no-certification" && (
             <div
