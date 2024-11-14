@@ -3,7 +3,7 @@ import { ArrowUpDown, Search } from "lucide-react";
 import { Button } from "@/view/components/ui/button";
 import { Input } from "@/view/components/ui/input";
 
-import { MovieCard } from "./components/movieCard";
+import { MovieCard } from "./components/Card";
 import { Pagination } from "./components/Pagination";
 import { useHomeController } from "./useHomeController";
 import { MovieDetailsModal } from "@/view/components/MovieDetailsModal";
@@ -24,7 +24,7 @@ export function Home() {
       <div className="flex items-center justify-between">
         <form
           onSubmit={handleSearch}
-          className="flex gap-2 items-center max-w-80"
+          className="flex gap-2 items-center max-w-80 w-full"
         >
           <Input
             name="search"
