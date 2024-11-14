@@ -11,7 +11,7 @@ export function Home() {
 
       {isFetching && <span>Carregando...</span>}
 
-      <div className="grid grid-cols-[repeat(auto-fit,_minmax(14rem,1fr))] gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md-custom:grid-cols-cards gap-4">
         {!!movies &&
           movies.movies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />

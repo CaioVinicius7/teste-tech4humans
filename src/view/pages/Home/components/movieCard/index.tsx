@@ -15,14 +15,14 @@ export function MovieCard({ movie }: MovieCardProps) {
   });
 
   return (
-    <div className="max-w-64 rounded-lg overflow-hidden relative cursor-pointer group">
+    <div className="rounded-lg overflow-hidden relative cursor-pointer group">
       <img
-        src={`https://image.tmdb.org/t/p/w342/${movie.posterPath}`}
+        src={`https://image.tmdb.org/t/p/w500/${movie.posterPath}`}
         alt="Poster do filme"
-        className="object-cover z-0 aspect-[2/3]"
+        className="object-cover aspect-[2/3] w-full"
       />
 
-      <div className="py-4 group-hover:opacity-100 z-10 bg-zinc-200 px-2 absolute inset-0 opacity-0 transition">
+      <div className="py-4 group-hover:opacity-100 bg-zinc-200 px-2 absolute inset-0 opacity-0 transition">
         <strong className="text-lg leading-3">{movie.title}</strong>
 
         <div className="flex items-center justify-between">
