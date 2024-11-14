@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { ArrowUpDown, Search } from "lucide-react";
 
 import { Button } from "@/view/components/ui/button";
 import { Input } from "@/view/components/ui/input";
@@ -7,9 +7,10 @@ import { MovieCard } from "./components/movieCard";
 import { Pagination } from "./components/Pagination";
 import { useHomeController } from "./useHomeController";
 import { MovieDetailsModal } from "@/view/components/MovieDetailsModal";
+import { SortSelect } from "./components/SortSelect";
 
 export function Home() {
-  const { movies, meta, isFetching, handlePaginate, handleSearch } =
+  const { movies, meta, isFetching, hasSearch, handlePaginate, handleSearch } =
     useHomeController();
 
   return (
@@ -20,17 +21,32 @@ export function Home() {
 
       {isFetching && <span>Carregando...</span>}
 
-      <form onSubmit={handleSearch} className="flex gap-2 max-w-80">
-        <Input
-          name="search"
-          placeholder="Qual filme Deseja pesquisar?"
-          autoComplete="off"
-        />
+      <div className="flex items-center justify-between">
+        <form
+          onSubmit={handleSearch}
+          className="flex gap-2 items-center max-w-80"
+        >
+          <Input
+            name="search"
+            placeholder="Qual filme Deseja pesquisar?"
+            autoComplete="off"
+          />
 
-        <Button>
-          <Search className="size-4" />
-        </Button>
-      </form>
+          <Button>
+            <Search className="size-4" />
+          </Button>
+        </form>
+
+        {!hasSearch && (
+          <div className="flex items-center gap-2">
+            <ArrowUpDown className="size-4" />
+
+            <label htmlFor="sortSelect">Ordenar por:</label>
+
+            <SortSelect />
+          </div>
+        )}
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md-custom:grid-cols-cards gap-4">
         {!!movies &&

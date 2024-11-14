@@ -10,14 +10,17 @@ export function useHomeController() {
 
   const page = z.coerce.number().parse(searchParams.get("page") ?? 1);
   const search = searchParams.get("search");
+  const sortBy = searchParams.get("sortBy");
 
   const hasSearch = !!search;
+  const hasSort = !!sortBy;
 
   const { data: moviesData, isFetching: isFetchingMovies } = useQuery({
-    queryKey: ["movies", page],
+    queryKey: ["movies", page, sortBy],
     queryFn: () =>
       moviesService.getMovies({
-        page
+        page,
+        sortBy: hasSort ? sortBy : undefined
       }),
     enabled: !hasSearch
   });
@@ -50,6 +53,7 @@ export function useHomeController() {
 
     setSearchParams((prevPrams) => {
       prevPrams.delete("page");
+      prevPrams.delete("sortBy");
       prevPrams.set("search", search);
 
       return prevPrams;
@@ -60,6 +64,7 @@ export function useHomeController() {
     movies: hasSearch ? searchedMoviesData?.movies : moviesData?.movies,
     meta: hasSearch ? searchedMoviesData?.meta : moviesData?.meta,
     isFetching: isFetchingMovies || isFetchingMoviesSearched,
+    hasSearch,
     handlePaginate,
     handleSearch
   };

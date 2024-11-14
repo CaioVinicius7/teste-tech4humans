@@ -3,6 +3,7 @@ import { MovieMapper, type RawMovie } from "@/app/utils/mappers/movieMapper";
 
 interface GetMoviesRequest {
   page?: number;
+  sortBy?: string;
 }
 
 interface GetMoviesResponse {
@@ -12,10 +13,14 @@ interface GetMoviesResponse {
   results: RawMovie[];
 }
 
-export async function getMovies({ page = 1 }: GetMoviesRequest) {
+export async function getMovies({
+  page = 1,
+  sortBy = "primary_release_date.desc"
+}: GetMoviesRequest) {
   const { data } = await httpClient.get<GetMoviesResponse>("/discover/movie", {
     params: {
-      page
+      page,
+      sort_by: sortBy
     }
   });
 
