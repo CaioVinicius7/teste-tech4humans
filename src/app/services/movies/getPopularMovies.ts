@@ -1,5 +1,5 @@
 import { httpClient } from "@/app/lib/axios";
-import { MovieMapper, type RawMovie } from "@/app/utils/mappers";
+import { MovieMapper, type RawMovie } from "@/app/utils/mappers/movieMapper";
 
 interface GetPopularMoviesResponse {
   page: number;

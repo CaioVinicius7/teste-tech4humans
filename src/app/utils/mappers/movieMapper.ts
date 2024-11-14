@@ -1,4 +1,4 @@
-import type { Movie } from "../entities/Movie";
+import type { Movie } from "../../entities/Movie";
 
 export interface RawMovie {
   adult: boolean;
