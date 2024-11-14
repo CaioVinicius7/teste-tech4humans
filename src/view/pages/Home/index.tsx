@@ -1,29 +1,19 @@
+import { MovieCard } from "./components/movieCard";
 import { useHomeController } from "./useHomeController";
 
 export function Home() {
   const { movies, isFetching } = useHomeController();
 
   return (
-    <main>
-      <h2>Listagem de filmes populares:</h2>
-
+    <main className="max-w-[1420] px-10 w-full mx-auto py-10">
       {!movies && <span>Ops! Nenhum filme foi encontrado...</span>}
 
       {isFetching && <span>Carregando...</span>}
 
-      <div className="flex items-center flex-wrap gap-4">
+      <div className="flex items-center justify-center flex-wrap gap-4">
         {!!movies &&
           movies.movies.map((movie) => (
-            <div>
-              <img
-                src={`https://image.tmdb.org/t/p/w154/${movie.posterPath}`}
-                alt="Capa do filme"
-              />
-
-              <strong>{movie.title}</strong>
-
-              <p>{movie.overview}</p>
-            </div>
+            <MovieCard key={movie.id} movie={movie} />
           ))}
       </div>
     </main>
