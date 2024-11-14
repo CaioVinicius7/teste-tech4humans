@@ -40,7 +40,7 @@ export function MovieCard({ movie }: MovieCardProps) {
           )}
         </div>
 
-        <p className="leading-tight mt-8">{movie.overview}</p>
+        <p className="leading-tight mt-8 line-clamp-[12]">{movie.overview}</p>
       </div>
     </div>
   );
