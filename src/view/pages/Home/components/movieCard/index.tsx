@@ -18,7 +18,7 @@ export function MovieCard({ movie }: MovieCardProps) {
     <div className="rounded-lg overflow-hidden relative cursor-pointer group">
       <img
         src={`https://image.tmdb.org/t/p/w500/${movie.posterPath}`}
-        alt="Poster do filme"
+        alt={`Poster do filme ${movie.title}`}
         className="object-cover aspect-[2/3] w-full"
       />
 
@@ -26,7 +26,11 @@ export function MovieCard({ movie }: MovieCardProps) {
         <strong className="text-lg leading-3">{movie.title}</strong>
 
         <div className="flex items-center justify-between">
-          <span>{dateFormatter(movie.releaseDate)}</span>
+          {movie.releaseDate ? (
+            <span>{dateFormatter(movie.releaseDate)}</span>
+          ) : (
+            <div />
+          )}
 
           {hasAgeGroup && (
             <div
