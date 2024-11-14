@@ -19,7 +19,7 @@ export function MovieCard({ movie }: MovieCardProps) {
       <img
         src={`https://image.tmdb.org/t/p/w342/${movie.posterPath}`}
         alt="Poster do filme"
-        className="object-cover z-0"
+        className="object-cover z-0 aspect-[2/3]"
       />
 
       <div className="py-4 group-hover:opacity-100 z-10 bg-zinc-200 px-2 absolute inset-0 opacity-0 transition">
