@@ -1,6 +1,7 @@
 import type { Movie } from "@/app/entities/Movie";
 import { cn } from "@/app/lib/utils";
 import { ageGroupColorPick } from "@/app/utils/ageGroupColorPick";
+import defaultPoster from "@/assets/default-poster.png";
 import { dateFormatter } from "@/app/utils/dateFormatter";
 
 import { useMovieCardController } from "./useMovieCardController";
@@ -20,7 +21,11 @@ export function MovieCard({ movie }: MovieCardProps) {
       className="rounded-lg overflow-hidden relative cursor-pointer group"
     >
       <img
-        src={`https://image.tmdb.org/t/p/w500/${movie.posterPath}`}
+        src={
+          !!movie.posterPath
+            ? `https://image.tmdb.org/t/p/w500/${movie.posterPath}`
+            : defaultPoster
+        }
         alt={`Poster do filme ${movie.title}`}
         className="object-cover aspect-[2/3] w-full"
       />
