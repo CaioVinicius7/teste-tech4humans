@@ -23,13 +23,17 @@ export function SearchInput() {
         className="rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0"
       />
 
-      <Button className="rounded-l-none bg-[#032541] hover:bg-[#507ea3]">
+      <Button
+        data-testid="searchButton"
+        className="rounded-l-none bg-[#032541] hover:bg-[#507ea3]"
+      >
         <Search className="size-4" />
       </Button>
 
       {!!search && (
         <button
           type="button"
+          data-testid="clearSearchButton"
           onClick={handleClearSearch}
           className="absolute right-12 h-full p-2"
         >
