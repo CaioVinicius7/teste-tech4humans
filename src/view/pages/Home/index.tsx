@@ -2,6 +2,7 @@ import { cn } from "@/app/lib/utils";
 import { MovieDetailsModal } from "@/view/components/MovieDetailsModal";
 
 import { EmptyView } from "./components/EmptyView";
+import { GetMovieRecommendationsPopover } from "./components/GetMovieRecommendationsPopover.tsx";
 import { MovieCard } from "./components/MovieCard";
 import { MovieCardsSkeleton } from "./components/MovieCardsSkeleton";
 import { Pagination } from "./components/Pagination";
@@ -49,6 +50,8 @@ export function Home() {
       )}
 
       <MovieDetailsModal />
+
+      <GetMovieRecommendationsPopover />
     </main>
   );
 }

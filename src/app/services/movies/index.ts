@@ -1,3 +1,4 @@
+import { getMovieRecommendationsByGenre } from "./getMovieRecommendationsByGenre.ts";
 import { getMovieReleaseDates } from "./getMovieReleaseDates";
 import { getMovies } from "./getMovies";
 import { getMoviesByTitle } from "./getMoviesByTitle";
@@ -9,5 +10,6 @@ export const moviesService = {
   getMovies,
   getMovieReleaseDates,
   getMoviesByTitle,
-  getMovieVideo
+  getMovieVideo,
+  getMovieRecommendationsByGenre
 };
