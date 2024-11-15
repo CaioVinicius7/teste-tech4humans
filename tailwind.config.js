@@ -55,7 +55,7 @@ export default {
         "md-custom": "784px"
       },
       gridTemplateColumns: {
-        cards: "repeat(auto-fit, minmax(14rem, 1fr))"
+        cards: "repeat(auto-fill, minmax(14rem, 1fr))"
       }
     }
   },
