@@ -41,8 +41,8 @@ export function MovieDetailsModal() {
               src={`https://www.youtube.com/embed/${movieVideoKey}`}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              className="absolute inset-0 aspect-video w-full rounded-md"
               onLoad={handleIframeload}
+              className="absolute inset-0 aspect-video w-full rounded-md"
             />
           )}
         </div>
