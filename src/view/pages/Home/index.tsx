@@ -1,7 +1,9 @@
 import { ArrowUpDown } from "lucide-react";
 
+import { cn } from "@/app/lib/utils";
 import { MovieDetailsModal } from "@/view/components/MovieDetailsModal";
 
+import { EmptyView } from "./components/EmptyView";
 import { MovieCard } from "./components/MovieCard";
 import { MovieCardsSkeleton } from "./components/MovieCardsSkeleton";
 import { Pagination } from "./components/Pagination";
@@ -11,16 +13,19 @@ import { SortSelect } from "./components/SortSelect";
 import { useHomeController } from "./useHomeController";
 
 export function Home() {
-  const { movies, meta, isFetching, hasSearch, handlePaginate } =
+  const { movies, meta, isFetching, hasSearch, hasMovies, handlePaginate } =
     useHomeController();
 
   return (
     <main className="mx-auto w-full max-w-[1420px] space-y-6 px-10 py-10">
-      {!movies && !isFetching && (
-        <span>Ops! Nenhum filme foi encontrado...</span>
-      )}
+      {!hasMovies && !isFetching && <EmptyView />}
 
-      <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+      <div
+        className={cn(
+          "flex flex-col items-start justify-between gap-4 md:flex-row md:items-center",
+          !hasMovies && "justify-center"
+        )}
+      >
         <SearchInput />
 
         {!hasSearch && (
@@ -39,12 +44,12 @@ export function Home() {
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-4 md-custom:grid-cols-cards">
         {isFetching && <MovieCardsSkeleton />}
 
-        {!isFetching &&
-          !!movies &&
-          movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+        {hasMovies &&
+          !isFetching &&
+          movies!.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
       </div>
 
-      {!!meta && !isFetching && (
+      {hasMovies && !!meta && !isFetching && (
         <Pagination
           page={meta.page}
           totalPages={meta.totalPages}

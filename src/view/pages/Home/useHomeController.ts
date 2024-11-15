@@ -43,11 +43,15 @@ export function useHomeController() {
     });
   }
 
+  const hasMovies =
+    (hasSearch ? searchedMoviesData?.movies : moviesData?.movies)?.length !== 0;
+
   return {
     movies: hasSearch ? searchedMoviesData?.movies : moviesData?.movies,
     meta: hasSearch ? searchedMoviesData?.meta : moviesData?.meta,
     isFetching: isFetchingMovies || isFetchingMoviesSearched,
     hasSearch,
+    hasMovies,
     handlePaginate
   };
 }
