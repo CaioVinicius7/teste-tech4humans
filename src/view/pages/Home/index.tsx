@@ -1,5 +1,3 @@
-import { ArrowUpDown } from "lucide-react";
-
 import { cn } from "@/app/lib/utils";
 import { MovieDetailsModal } from "@/view/components/MovieDetailsModal";
 
@@ -28,17 +26,7 @@ export function Home() {
       >
         <SearchInput />
 
-        {!hasSearch && (
-          <div className="flex items-center gap-2">
-            <ArrowUpDown className="size-4 shrink-0" />
-
-            <label htmlFor="sortSelect" className="text-sm sm:text-base">
-              Ordenar por:
-            </label>
-
-            <SortSelect />
-          </div>
-        )}
+        {!hasSearch && <SortSelect />}
       </div>
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-4 md-custom:grid-cols-cards">
@@ -49,6 +37,8 @@ export function Home() {
           movies!.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
       </div>
 
+      {isFetching && <PaginationSkeleton />}
+
       {hasMovies && !!meta && !isFetching && (
         <Pagination
           page={meta.page}
@@ -57,8 +47,6 @@ export function Home() {
           onPageChange={handlePaginate}
         />
       )}
-
-      {isFetching && <PaginationSkeleton />}
 
       <MovieDetailsModal />
     </main>
