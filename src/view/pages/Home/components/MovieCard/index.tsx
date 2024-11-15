@@ -16,7 +16,7 @@ export function MovieCard({ movie }: MovieCardProps) {
   });
 
   return (
-    <div
+    <article
       onClick={() => openMovieModal(movie)}
       className="group relative cursor-pointer overflow-hidden rounded-lg"
     >
@@ -37,7 +37,7 @@ export function MovieCard({ movie }: MovieCardProps) {
           {movie.releaseDate ? (
             <span>{dateFormatter(movie.releaseDate)}</span>
           ) : (
-            <div />
+            <span />
           )}
 
           {hasAgeGroup && (
@@ -52,10 +52,10 @@ export function MovieCard({ movie }: MovieCardProps) {
           )}
         </div>
 
-        <p className="mt-8 line-clamp-[12] hidden leading-tight sm:block">
-          {movie.overview}
-        </p>
+        <div className="hidden sm:block">
+          <p className="mt-8 line-clamp-[12] leading-tight">{movie.overview}</p>
+        </div>
       </div>
-    </div>
+    </article>
   );
 }
