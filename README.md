@@ -16,7 +16,7 @@ Este projeto foi desenvolvido como teste técnico para a vaga de desenvolvedor n
 
 - [Lucide icons](https://lucide.dev/icons/)
 
-- [Tailwind](httpshttps://tailwindcss.com/vitejs.dev/)
+- [Tailwind](https://tailwindcss.com/vitejs.dev/)
 
 - [React Router Dom](https://reactrouter.com/en/main)
 
